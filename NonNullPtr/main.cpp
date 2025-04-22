@@ -7,24 +7,22 @@ int main()
 	int x = 1;
 	int* pX = &x;
 
-	NonNullObserverPtrL<int> xWrap(pX);
+	NonNullObserverPtr<int> xWrap(pX);
 	*xWrap = 2;
 	std::cout << *xWrap;
 
 	int* NULLPTR = nullptr;
 
-	NonNullObserverPtrL<int> nullWrap(NULLPTR);
+	NonNullObserverPtr<int> nullWrap(NULLPTR);
 
 	try
 	{
-		NonNullObserverPtrT<int> qwe(NULLPTR);
+		NonNullObserverPtr<int> qwe(NULLPTR);
 	}
-	catch (InvalidPointer& ip)
+	catch (std::invalid_argument& ip)
 	{
 		std::cout << ip.what();
 	}
-
-
 
 	return 0;
 }
